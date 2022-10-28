@@ -208,3 +208,4 @@ RemoveLinks $ServersList
 StopSMBShare
 #GPUpdate $ServersList
 DeleteDriver
+Write-Host "The program has completed successfully. Now, Manually update all computers in the domain"
