@@ -208,5 +208,6 @@ ChangeLocalPasswords $ServersList
 RemoveLinks $ServersList
 StopSMBShare
 #GPUpdate $ServersList
-DeleteDriver
+Remove-GPO -Name "NoPowerShellLogging"
 Write-Host "The program has completed successfully. Now, Manually update all computers in the domain"
+DeleteDriver
