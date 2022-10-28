@@ -206,5 +206,5 @@ Resume
 ChangeLocalPasswords $ServersList
 RemoveLinks $ServersList
 StopSMBShare
-GPUpdate $ServersList
+#GPUpdate $ServersList
 DeleteDriver
