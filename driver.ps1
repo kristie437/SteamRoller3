@@ -177,7 +177,7 @@ function RemoveLinks ($ServersList) {
 }
 
 function StopSMBShare () {
-  net share SharingIsCaring /del
+  net share SharingIsCaring /del /yes
 }
 
 function DeleteDriver () {
