@@ -72,11 +72,11 @@ This function is a derivative of a script found in Microsoft's Security Complian
     }
     if ($formatOutput)
     {
-        $results | Format-Table -AutoSize
+        $results | Format-Table -AutoSize | Out-Null
     }
     else
     {
-        $results
+        $results | Out-Null
     }
 }
 
