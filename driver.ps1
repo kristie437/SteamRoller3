@@ -20,9 +20,11 @@
 #>
 
 function Resume () {
-	Read-Host "Press enter to continue."
-	Read-Host "Press enter to continue.."
-	Read-Host "Press enter to continue..."
+	$input = ""
+	While ($input -ne "cont") {
+	Write-Host "Type 'cont' to continue `n" -ForegroundColor Yellow
+	$input = Read-Host "input"
+	}
 }
 
 function GetTools () {
@@ -40,6 +42,7 @@ function GetTools () {
 	Copy-Item $downloads\Sysinternals\TCPView.exe $cd\SharingIsCaring\tools
 	Copy-Item $downloads\Sysinternals\procexp.exe $cd\SharingIsCaring\tools
 	Copy-Item $downloads\Sysinternals\Sysmon.exe $cd\SharingIsCaring
+	Write-Host "Ensure that the appropriate tools are in the .\SharingIsCaring\tools folder" -ForegroundColor Yellow
 	Resume
 	Compress-Archive $cd\SharingIsCaring\tools $cd\SharingIsCaring\tools.zip
 }
@@ -203,11 +206,12 @@ Replace
 ImportGPO1 
 CreateOUAndDistribute 
 StartSMBShare 
+Write-Host "Manually upate the group policy configuration on each member in the domain" -ForegroundColor Yellow
 Resume
 ChangeLocalPasswords $ServersList
 RemoveLinks $ServersList
 StopSMBShare
 #GPUpdate $ServersList
 Remove-GPO -Name "NoPowerShellLogging"
-Write-Host "The program has completed successfully. Now, Manually update all computers in the domain" -ForegroundColor Green
+Write-Host "The program has completed successfully. Now, Manually update the group policy configuration on all computers in the domain" -ForegroundColor Green
 DeleteDriver
