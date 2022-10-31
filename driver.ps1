@@ -42,7 +42,7 @@ function GetTools () {
 	Copy-Item $downloads\Sysinternals\TCPView.exe $cd\SharingIsCaring\tools
 	Copy-Item $downloads\Sysinternals\procexp.exe $cd\SharingIsCaring\tools
 	Copy-Item $downloads\Sysinternals\Sysmon.exe $cd\SharingIsCaring
-	Write-Host "Ensure that the appropriate tools are in the .\SharingIsCaring\tools folder" -ForegroundColor Yellow
+	Write-Host "`nEnsure that the appropriate tools are in the .\SharingIsCaring\tools folder" -ForegroundColor Yellow
 	Resume
 	Compress-Archive $cd\SharingIsCaring\tools $cd\SharingIsCaring\tools.zip
 }
@@ -207,7 +207,7 @@ Replace
 ImportGPO1 
 CreateOUAndDistribute 
 StartSMBShare 
-Write-Host "Manually upate the group policy configuration on each member in the domain" -ForegroundColor Yellow
+Write-Host "`nManually upate the group policy configuration on each member in the domain" -ForegroundColor Yellow
 Resume
 ChangeLocalPasswords $ServersList
 RemoveLinks $ServersList
