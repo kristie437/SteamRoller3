@@ -209,5 +209,5 @@ RemoveLinks $ServersList
 StopSMBShare
 #GPUpdate $ServersList
 Remove-GPO -Name "NoPowerShellLogging"
-Write-Host "The program has completed successfully. Now, Manually update all computers in the domain"
+Write-Host "The program has completed successfully. Now, Manually update all computers in the domain" -ForegroundColor Green
 DeleteDriver
