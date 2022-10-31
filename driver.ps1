@@ -85,16 +85,16 @@ function ImportGPO1 () {
 This function is a derivative of a script found in Microsoft's Security Compliance Toolkit 
 #>
     $GpoMap = ImportGPO2("$(pwd)\GPO")
-    Write-Host "Importing the following GPOs:"
-    Write-Host
-    $GpoMap.Keys | ForEach-Object { Write-Host $_ }
-    Write-Host
-    Write-Host
+    #Write-Host "Importing the following GPOs:"
+    #Write-Host
+    #$GpoMap.Keys | ForEach-Object { Write-Host $_ }
+    #Write-Host
+    #Write-Host
     $gpoDir = "$(pwd)\GPO"
     $GpoMap.Keys | ForEach-Object {
         $key = $_
         $guid = $GpoMap[$key]
-        Write-Host ($guid + ": " + $key)
+        #Write-Host ($guid + ": " + $key)
         Import-GPO -BackupId $guid -Path $gpoDir -TargetName "$key" -CreateIfNeeded
     }
 }
