@@ -50,7 +50,7 @@ function GetTools () {
 function ChangeADPass () {
     $domain = $(Get-ADDomain | Select -ExpandProperty NetBIOSName)
     Add-Type -AssemblyName System.Web
-    Write-Output "Username, Password" > C:\incred.csv
+    Write-Output "Username,Password" > C:\incred.csv
     Get-ADUser -Filter * | ?{$_.Name -ne "Administrator"} | %{
     $user = $_.Name
     $pass = [System.Web.Security.Membership]::GeneratePassword(15,2)
