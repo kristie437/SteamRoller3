@@ -25,6 +25,7 @@ function Resume () {
 	Write-Host "Type 'cont' to continue `n" -ForegroundColor Yellow
 	$input = Read-Host "input"
 	}
+	Write-Host "`n"
 }
 
 function GetTools () {
