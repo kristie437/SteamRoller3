@@ -50,7 +50,7 @@ function ChangeADPass () {
     Write-Output "Username, Password" > C:\incred.csv
     Get-ADUser -Filter * | ?{$_.Name -ne "Administrator"} | %{
     $user = $_.Name
-    $pass = [System.Web.Security.Membership]::GeneratePassword(14,2)
+    $pass = [System.Web.Security.Membership]::GeneratePassword(15,2)
     Write-Output "$domain\$user,$pass" >> C:\incred.csv
     Set-ADAccountPassword -Identity $_.Name -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $pass -Force) 
     $pass = $Null
@@ -147,7 +147,7 @@ function ChangeLocalPasswords ($ServersList) {
   $cd = $(pwd)
   $ServersList | %{
     Try {
-    		& $cd\PSExec.exe \\$_ -NoBanner -AcceptEULA PowerShell -Command "Add-Type -AssemblyName System.Web;`$c=',';`$h=`$(hostname);Get-WMIObject Win32_Useraccount | Select -ExpandProperty Name | ?{ `$_ -ne 'Administrator' } | %{`$pass = [System.Web.Security.Membership]::GeneratePassword(14,4); Write-Output `$h\`$_`$c`$pass`n; Net User `$_ `$pass > `$NULL; `$pass = `$NULL }" >> C:\incred.csv
+    		& $cd\PSExec.exe \\$_ -NoBanner -AcceptEULA PowerShell -Command "Add-Type -AssemblyName System.Web;`$c=',';`$h=`$(hostname);Get-WMIObject Win32_Useraccount | Select -ExpandProperty Name | ?{ `$_ -ne 'Administrator' } | %{`$pass = [System.Web.Security.Membership]::GeneratePassword(15,2); Write-Output `$h\`$_`$c`$pass`n; Net User `$_ `$pass > `$NULL; `$pass = `$NULL }" >> C:\incred.csv
 		#& $cd\PsExec.exe \\$_ -nobanner -accepteula powershell -command "Add-Type -AssemblyName System.Web;`$c = ','; `$h=`$(hostname); Get-LocalUser | ?{`$_.Name -ne 'Administrator'} | %{`$pass=[System.Web.Security.Membership]::GeneratePassword(20,2); Set-LocalUser -Name `$_.Name -Password (ConvertTo-SecureString -AsPlainText `$pass -Force); Write-Output `$h\`$_`$c`$pass; `$pass = `$Null}" >> C:\incred.csv
 	}
     Catch {
